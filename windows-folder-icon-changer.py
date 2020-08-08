@@ -1,6 +1,7 @@
 import os
 import tkinter as tk
 from configparser import ConfigParser
+from platform import system
 from subprocess import run
 from tkinter import filedialog
 
@@ -137,19 +138,25 @@ class IconChanger():
 
 
 if __name__ == "__main__":
-    while True:
-        print(
-            '--------------------------------------------------\n'
-            '(1) Change folder icon\t'
-            '(2) Reset folder and .ini attributes, delete .ini'
-        )
-        mode = input('Please select mode: ')
-        if mode.isdigit():
-            mode = int(mode)
-            if mode >= 1 and mode <= 2:
-                break
-    handler = IconChanger()
-    handler.start()
+    if system() != 'Windows':
+        print('<<< Must be Windows system. >>>')
+        print('<<< Must be Windows system. >>>')
+        print('<<< Must be Windows system. >>>')
+        os.system('pause')
+    else:
+        while True:
+            print(
+                '--------------------------------------------------\n'
+                '(1) Change folder icon\t'
+                '(2) Reset folder and .ini attributes, delete .ini'
+            )
+            mode = input('Please select mode: ')
+            if mode.isdigit():
+                mode = int(mode)
+                if mode >= 1 and mode <= 2:
+                    break
+        handler = IconChanger()
+        handler.start()
 
-    print('FINISHED')
-    os.system('pause')
+        print('FINISHED')
+        os.system('pause')
